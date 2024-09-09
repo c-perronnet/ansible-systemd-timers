@@ -17,6 +17,9 @@ ExecStart={{ item.value.timer_command }}
 {% if item.value.timer_user is defined and (systemd_scope is not defined or systemd_scope != 'user') %}
 User={{ item.value.timer_user }}
 {% endif %}
+{% if item.value.timer_postcommand is defined %}
+ExecStartPost={{ item.value.timer_postcommand }}
+{% endif %}
 {% if item.value.timer_workingdir is defined %}
 WorkingDirectory={{ item.value.timer_workingdir }}
 {% endif %}
