@@ -7,6 +7,10 @@ Description={{ item.key }} Service
 
 [Service]
 Type=oneshot
+SyslogIdentifier={{ item.value.timer_syslog_identifier | default(systemd_timer_syslog_identifier_prefix ~ item.key) }}
+{% if item.value.timer_syslog_facility is defined or systemd_timer_syslog_facility %}
+SyslogFacility={{ item.value.timer_syslog_facility | default(systemd_timer_syslog_facility) }}
+{% endif %}
 {% if item.value.timer_envfile is defined %}
 EnvironmentFile={{ item.value.timer_envfile }}
 {% endif %}

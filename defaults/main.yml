@@ -1,0 +1,12 @@
+---
+# Prefix prepended to the auto-derived SyslogIdentifier of every generated
+# service unit. The identifier defaults to the timer name (the `timers` dict
+# key); with a prefix of "cron-" the timer `import_rss` is emitted as
+# `SyslogIdentifier=cron-import_rss`. Leave empty for the bare timer name.
+# A single timer can override the whole value with `timer_syslog_identifier`.
+systemd_timer_syslog_identifier_prefix: ''
+
+# Syslog facility for the service unit's stdout/stderr (e.g. local5). When
+# empty the unit keeps systemd's default facility (daemon). A single timer
+# can override this with `timer_syslog_facility`.
+systemd_timer_syslog_facility: ''
